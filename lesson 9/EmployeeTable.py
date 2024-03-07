@@ -11,7 +11,8 @@ class EmployeeTable:
         "insert employee": text(
             """INSERT INTO employee (is_active, create_timestamp, change_timestamp, 
             first_name, last_name, phone, company_id) 
-            VALUES (true, now(), now(), :first_name, :last_name, :phone, :company_id)""")
+            VALUES (true, now(), now(), :first_name, :last_name, :phone, :company_id)"""),
+        "delete by id" : text("delete from employee where id = :id_to_delete")
 
     }
     
@@ -30,6 +31,9 @@ class EmployeeTable:
 
     def get_max_id_employee(self):
         return  self.db.execute(self.__scripts["get max id employee"]).fetchall()[0][0]
+    
+    def delete_employee(self, id):
+        self.db.execute(self.__scripts["delete by id"], id_to_delete = id)
 
     
     

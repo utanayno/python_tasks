@@ -20,9 +20,8 @@ class EmployeeApi:
         return resp.json()
     
     #метод на добавление сотрудника (все поля заполнены)
-    def create_employee(self, id, firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive):
+    def create_employee(self, firstName, lastName, middleName, companyId, email, url, phone, birthdate, isActive):
         employee = {
-            "id": id,
             "firstName": firstName,
             "lastName": lastName,
             "middleName": middleName,
